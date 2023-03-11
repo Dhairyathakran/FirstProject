@@ -12,6 +12,8 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 
+print("Titanic project!!")
+
 "Import DataSet Second"
 
 training_set = pd.read_csv('/Users/dhair/Downloads/ML+Classification+Package/ML Classification Package/3. Logisitic Regression/Train_Titanic.csv')
