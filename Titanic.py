@@ -7,6 +7,7 @@ Created on Fri Mar  3 00:23:57 2023
 
 "Import Libraries First"
 
+import sys
 import pandas as pd
 import numpy as np
 import seaborn as sns
@@ -18,7 +19,6 @@ from sklearn.metrics import confusion_matrix
 
 
 
-dataFile='/Users/dhair/Downloads/ML+Classification+Package/ML Classification Package/3. Logisitic Regression/Train_Titanic.csv'
 
 """ --Fill Average value it into the missing Place--"""
 def Fill_age(data):
@@ -176,10 +176,23 @@ def fullAnalysis(actual, predicted):
     print(classification_report(actual, predicted))
     
 
+def usage():
+    print("Error : Please pass the valid arguments")
+    print("python executable <input Argument>")
+    print("Exiting the program")
+    return
 
-if __name__ == "__main__":
-    print("I am in main")
-    
+
+
+def main(cmdArgs):
+    # Parse input arguments
+    argsCount = len(cmdArgs)
+    if argsCount < 2:
+        usage()
+        return
+        
+    dataFile = cmdArgs[1]
+ 
     #prepare data
     X_train,X_test,y_train,y_test = dataLoadAndSplit(dataFile)
     
@@ -196,9 +209,16 @@ if __name__ == "__main__":
     print("         ***** Results Analysis Sumary  *****                     ")
     print("**********************************************************")
     fullAnalysis(y_test, predictedResults)
-    
+
+
     #display
     print("display results")
+
+if __name__ == "__main__":
+    print("I am in main")
+    main(sys.argv)
+    
+
     
 
 
